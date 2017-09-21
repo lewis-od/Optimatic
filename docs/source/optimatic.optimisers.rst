@@ -4,6 +4,14 @@ optimatic.optimisers package
 Submodules
 ----------
 
+optimatic.optimisers.differential_evolution module
+--------------------------------------------------
+
+.. automodule:: optimatic.optimisers.differential_evolution
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 optimatic.optimisers.grad_desc module
 -------------------------------------
 
