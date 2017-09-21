@@ -5,3 +5,4 @@ This is just something I'm putting together to learn about optimisation
 algorithms, and isn't really intended for real-world use.
 
 [![Documentation Status](https://readthedocs.org/projects/optimatic/badge/?version=latest)](http://optimatic.readthedocs.io/en/latest/?badge=latest)
+[![Build Status](https://travis-ci.org/lewis-od/Optimatic.svg?branch=master)](https://travis-ci.org/lewis-od/Optimatic)
