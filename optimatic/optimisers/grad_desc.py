@@ -8,7 +8,16 @@ Uses the reccurence relation:
 
 .. math::
 
-    \mathbf{x}_n = \mathbf{x}_{n-1} - \gamma \\nabla f(\mathbf{x}_{n-1})
+    \mathbf{x}_n = \mathbf{x}_{n-1} - \gamma_n \\nabla f(\mathbf{x}_{n-1})
+
+Where
+
+.. math::
+
+    \gamma_n = \\frac{(\mathbf{x}_n - \mathbf{x}_{n-1}) \cdot \
+        (\mathbf{\\nabla}f(\mathbf{x}_n) - \mathbf{\\nabla}\
+        f(\mathbf{x}_{n-1}))}{||\mathbf{\\nabla}f(\mathbf{x}_n) - \
+        \mathbf{\\nabla}f(\mathbf{x}_{n-1})||^2}
 """
 import numpy as np
 from optimatic.optimisers.optimiser_base import Optimiser as OptimiserBase
