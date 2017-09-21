@@ -11,7 +11,7 @@ Uses the reccurence relation:
     \mathbf{x}_n = \mathbf{x}_{n-1} - \gamma \\nabla f(\mathbf{x}_{n-1})
 """
 import numpy as np
-from optimiser import Optimiser as OptimiserBase
+from optimatic.optimisers.optimiser_base import Optimiser as OptimiserBase
 
 class Optimiser(OptimiserBase):
     """

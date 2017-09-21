@@ -1,6 +1,7 @@
 import unittest
 import numpy as np
 from optimatic.optimisers.grad_desc import Optimiser
+from optimatic.exceptions import DidNotConvergeException
 
 class TestGradientDescent(unittest.TestCase):
 
@@ -13,6 +14,13 @@ class TestGradientDescent(unittest.TestCase):
         opt = Optimiser(self.f, self.df, np.random.normal(scale=5))
         found = opt.optimise()
         self.assertEqual(self.min, found)
+
+    def test_error(self):
+        f = lambda x: 3*x + 2
+        df = lambda x: 3
+        opt = Optimiser(f, df, np.random.normal(scale=5))
+        with self.assertRaises(DidNotConvergeException):
+            opt.optimise()
 
 if __name__ == '__main__':
     unittest.main()

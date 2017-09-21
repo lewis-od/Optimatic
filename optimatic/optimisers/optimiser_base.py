@@ -4,6 +4,7 @@ Optimiser base class
 All optimiser classes should inherit from this class
 """
 from abc import ABCMeta, abstractmethod
+from optimatic.exceptions import DidNotConvergeException
 import numpy as np
 
 class Optimiser(object):
@@ -32,8 +33,11 @@ class Optimiser(object):
         i = 0
         self.step()
         step_size = np.linalg.norm(self.xn - self.xn_1)
-        while step_size > self.precision and i < self.steps:
+        while step_size > self.precision and i <= self.steps:
             self.step()
             step_size = np.linalg.norm(self.xn - self.xn_1)
             i += 1
+        if i >= self.steps and step_size > self.precision:
+            msg = "Algorithm did not converge after {} steps.".format(i)
+            raise DidNotConvergeException(msg)
         return self.xn

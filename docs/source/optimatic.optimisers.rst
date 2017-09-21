@@ -12,10 +12,10 @@ optimatic.optimisers.grad_desc module
     :undoc-members:
     :show-inheritance:
 
-optimatic.optimisers.optimiser module
--------------------------------------
+optimatic.optimisers.optimiser_base module
+------------------------------------------
 
-.. automodule:: optimatic.optimisers.optimiser
+.. automodule:: optimatic.optimisers.optimiser_base
     :members:
     :undoc-members:
     :show-inheritance:
