@@ -92,7 +92,7 @@ class Optimiser(OptimiserBase):
                 self.xn[i] == self.search[i][1])
         if is_at_boundary:
             msg = "Agent reached edge of search space: {}".format(self.xn)
-            raise DidNotConvergeException()
+            raise DidNotConvergeException(msg)
         return self.xn
 
 
