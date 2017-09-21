@@ -25,4 +25,4 @@ Then import and initialise the optimiser you want to use, e.g.:
 Then run either :code:`opt.step()` to run one step of the chosen optimisation
 algorithm, or :code:`opt.optimise()` to run until either :code:`opt.steps` is
 exceeded, or :code:`opt.precision` is met. See
-:func:`~optimatic.grad_desc.Optimiser` for more details.
+:func:`~optimatic.optimisers.optimiser.Optimiser` for more details.

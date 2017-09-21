@@ -6,19 +6,8 @@ Subpackages
 
 .. toctree::
 
+    optimatic.optimisers
     optimatic.utils
-
-Submodules
-----------
-
-optimatic.grad_desc module
---------------------------
-
-.. automodule:: optimatic.grad_desc
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 
 Module contents
 ---------------
