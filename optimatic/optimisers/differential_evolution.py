@@ -5,6 +5,7 @@ https://en.wikipedia.org/wiki/Differential_evolution
 """
 
 from optimatic.optimisers.optimiser_base import Optimiser as OptimiserBase
+from optimatic.exceptions import DidNotConvergeException
 from copy import copy, deepcopy
 import random
 import numpy as np
@@ -77,10 +78,22 @@ class Optimiser(OptimiserBase):
                 new_agent.value = new_value
                 self.agents[index] = new_agent
 
-        # Set the best 2 agents to x_n and x_{n-1}
+        # Set the best and worst agents to x_n and x_{n-1}
         self.agents.sort(key=lambda a: a.value)
         self.xn = self.agents[0].position
-        self.xn_1 = self.agents[1].position
+        self.xn_1 = self.agents[-1].position
+
+    def optimise(self):
+        super(Optimiser, self).optimise()
+        is_at_boundary = True
+        for i in range(self.dims):
+            is_at_boundary = is_at_boundary and \
+                (self.xn[i] == self.search[i][0] or \
+                self.xn[i] == self.search[i][1])
+        if is_at_boundary:
+            msg = "Agent reached edge of search space: {}".format(self.xn)
+            raise DidNotConvergeException()
+        return self.xn
 
 
 class Agent(object):
