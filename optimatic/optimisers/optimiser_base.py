@@ -16,7 +16,7 @@ class Optimiser(object):
     """
     __metaclass__ = ABCMeta
 
-    def __init__(self, f, x0, precision=1e-4, steps=10000):
+    def __init__(self, f, x0, precision=1e-7, steps=10000):
         self.f = f
         self.xn = x0
         self.xn_1 = x0

@@ -36,7 +36,7 @@ def central_diff(f, h, epsilon=1e-4):
     :param h: The value to evaluate the derivative at
     :param epsilon: The value to use for epsilon
     """
-    if not isinstance(h, np.ndarray) or not isinstance(h, list):
+    if not isinstance(h, np.ndarray) and not isinstance(h, list):
         h = np.array([h])
     numerator = f(*(h + epsilon)) - f(*(h - epsilon))
     df = numerator / (2 * epsilon)

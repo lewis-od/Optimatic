@@ -11,12 +11,14 @@ class TestGradientDescent(unittest.TestCase):
         self.df = lambda x: 2 * (x - self.min)
 
     def test_optimiser(self):
-        opt = Optimiser(self.f, np.random.normal(scale=5), df=self.df)
+        x0 = np.array([np.random.normal(scale=5)])
+        opt = Optimiser(self.f, x0, df=self.df)
         found = opt.optimise()
         self.assertEqual(self.min, found)
 
     def test_optimiser_no_derivative(self):
-        opt = Optimiser(self.f, np.random.normal(scale=5))
+        x0 = np.array([np.random.normal(scale=5)])
+        opt = Optimiser(self.f, x0)
         found = opt.optimise()
         self.assertEqual(self.min, found)
 
