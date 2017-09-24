@@ -25,3 +25,6 @@ class TestDifferentialEvolution(unittest.TestCase):
         opt = Optimiser(f, search, 0.5, 1.2, 5, precision=1e-5, steps=1e5)
         with self.assertRaises(DidNotConvergeException):
             opt.optimise()
+
+if __name__ == '__main__':
+    unittest.main()

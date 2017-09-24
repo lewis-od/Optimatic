@@ -19,3 +19,6 @@ class TestDifferentiation(unittest.TestCase):
         self.assertAlmostEqual(df1, 4, places=4)
         df2 = central_diff(self.f2, np.pi)
         self.assertAlmostEqual(df2, -1, places=4)
+
+if __name__ == '__main__':
+    unittest.main()
