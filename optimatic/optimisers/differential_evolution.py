@@ -27,7 +27,7 @@ class Optimiser(OptimiserBase):
         the two agents closest to the minimum.
     :param steps: Max number of iterations to perform
     """
-    def __init__(self, f, search, cr, F, NP, precision=1e-4, steps=10000):
+    def __init__(self, f, search, cr, F, NP, precision=1e-7, steps=10000):
         super(Optimiser, self).__init__(f, 0.0, precision=precision, steps=steps)
 
         if not search.shape[1] == 2:
