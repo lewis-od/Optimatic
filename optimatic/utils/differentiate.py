@@ -16,13 +16,15 @@ def forward_diff(f, h, epsilon=1e-4):
     :param h: The value to evaluate the derivative at
     :param epsilon: The value to use for epsilon
     """
-    numerator = f(h + epsilon) - f(h)
+    if not isinstance(h, np.ndarray) or not isinstance(h, list):
+        h = np.array([h])
+    numerator = f(*(h + epsilon)) - f(*h)
     df = numerator / epsilon
     return df
 
 def central_diff(f, h, epsilon=1e-4):
     """
-    Calculates the value of :math:`f^{\prime}(x=h)` using the central difference 
+    Calculates the value of :math:`f^{\prime}(x=h)` using the central difference
     method:
 
     .. math::
@@ -34,6 +36,8 @@ def central_diff(f, h, epsilon=1e-4):
     :param h: The value to evaluate the derivative at
     :param epsilon: The value to use for epsilon
     """
-    numerator = f(h + epsilon) - f(h - epsilon)
+    if not isinstance(h, np.ndarray) or not isinstance(h, list):
+        h = np.array([h])
+    numerator = f(*(h + epsilon)) - f(*(h - epsilon))
     df = numerator / (2 * epsilon)
     return df
