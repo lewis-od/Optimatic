@@ -21,19 +21,26 @@ Where
 """
 import numpy as np
 from optimatic.optimisers.optimiser_base import Optimiser as OptimiserBase
+from optimatic.utils.differentiate import central_diff
 
 class Optimiser(OptimiserBase):
     """
     :param f: The function to optimise
-    :param df: The derivative of the function to optimise
     :param x0: The starting position for the algorithm
+    :param df: The derivative of the function to optimise. If this isn't
+        provided, it will be estimated from :math:`f` using
+        :func:`optimatic.utils.differentiate.central_diff`
     :param precision: The precision to calculate the minimum to
     :param gamma: The starting value for :math:`\gamma`
     :param steps: The max number of iterations of the algorithm to run
     """
-    def __init__(self, f, df, x0, precision=0.0001, gamma=0.1, steps=10000):
+    def __init__(self, f, x0, df=None, precision=0.0001, gamma=0.1,
+        steps=10000):
         super(Optimiser, self).__init__(f, x0, precision=precision, steps=steps)
-        self.df = df
+        if df is None:
+            self.df = lambda x: central_diff(f, x)
+        else:
+            self.df = df
         self.step_size = x0
         self.gamma = gamma
 

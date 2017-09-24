@@ -11,14 +11,19 @@ class TestGradientDescent(unittest.TestCase):
         self.df = lambda x: 2 * (x - self.min)
 
     def test_optimiser(self):
-        opt = Optimiser(self.f, self.df, np.random.normal(scale=5))
+        opt = Optimiser(self.f, np.random.normal(scale=5), df=self.df)
+        found = opt.optimise()
+        self.assertEqual(self.min, found)
+
+    def test_optimiser_no_derivative(self):
+        opt = Optimiser(self.f, np.random.normal(scale=5))
         found = opt.optimise()
         self.assertEqual(self.min, found)
 
     def test_error(self):
         f = lambda x: 3*x + 2
         df = lambda x: 3
-        opt = Optimiser(f, df, np.random.normal(scale=5))
+        opt = Optimiser(f, np.random.normal(scale=5), df=df)
         with self.assertRaises(DidNotConvergeException):
             opt.optimise()
 
